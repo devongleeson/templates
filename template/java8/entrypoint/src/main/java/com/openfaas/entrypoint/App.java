@@ -23,7 +23,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         int port = 8082;
 
-        IHandler handler = new com.openfaas.function.Handler();
+        IHandler handler = FunctionProvider.getInstance().serviceImpl();
 
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         InvokeHandler invokeHandler = new InvokeHandler(handler);
@@ -98,5 +98,4 @@ public class App {
             System.out.println("Request / " + Integer.toString(bytesOut.length) +" bytes written.");
         }
     }
-
 }
